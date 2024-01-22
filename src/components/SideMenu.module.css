@@ -1,0 +1,9 @@
+.sideMenuContainer {
+    background-color: rgba(255,255,255,0.75);
+    position: absolute;
+    right: 0;
+    width: 50vw;
+    height: 100dvh;
+    z-index: 10;
+    text-align: center;
+}
