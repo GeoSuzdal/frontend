@@ -1,13 +1,9 @@
 .sideMenuContainer {
-    background-color: rgb(255,255,255);
+    background-color: rgba(255,255,255);
     position: absolute;
     right: 0;
     width: 45vw;
     height: 100dvh;
-    max-height: 100vh;
     z-index: 10;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
 }

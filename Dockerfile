@@ -1,5 +1,5 @@
 # Stage 1: Build
-FROM node:20.9 as build
+FROM --platform=linux/amd64 node:20.9 as build
 
 WORKDIR /app
 
@@ -9,13 +9,13 @@ RUN npm install
 
 COPY . .
 
-ENV VITE_GEOSERVER_ENDPOINT="http://localhost:8080"
-ENV VITE_GEODATA_ENDPOINT="http://localhost:8000"
+ENV VITE_GEOSERVER_ENDPOINT="http://89.111.171.177"
+ENV VITE_GEODATA_ENDPOINT="http://89.111.171.177/geodata"
 
 RUN npm run build
 
 # Stage 2: Run
-FROM nginx:alpine
+FROM --platform=linux/amd64 nginx:alpine
 ENV NGINX_PORT=8888
 
 RUN echo "user nginx; worker_processes auto;                                            \
@@ -61,4 +61,5 @@ COPY --from=build /app/dist /usr/share/nginx/html
 
 EXPOSE $NGINX_PORT
 
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["nginx"]
+CMD ["-g", "daemon off;"]
